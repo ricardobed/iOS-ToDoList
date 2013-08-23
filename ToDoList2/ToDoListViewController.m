@@ -183,6 +183,20 @@
     return YES;
 }
 
+#pragma mark - Rearringing UITableView cells
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    NSString *stringToMove = [toDoItems objectAtIndex:sourceIndexPath.row];
+    [toDoItems removeObjectAtIndex:sourceIndexPath.row];
+    [toDoItems insertObject:stringToMove atIndex:destinationIndexPath.row];
+}
+
 #pragma mark - Setup
 
 - (void)setupNavigationBar
